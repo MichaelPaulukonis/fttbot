@@ -1,0 +1,26 @@
+{
+  "name": "malepropp",
+  "version": "0.0.0",
+  "description": "Story Generator using Proppiann Narratemes",
+  "main": "index.js",
+  "dependencies": {
+    "underscore": "~1.7.0",
+    "jquery": "~2.1.1",
+    "nlp_compromise": "~0.2.2",
+    "sentence-tokenizer": "0.0.7"
+  },
+  "devDependencies": {
+    "vows": "~0.7.0"
+  },
+  "scripts": {
+    "test": "node tests/test-malepropp.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MichaelPaulukonis/malepropp.git"
+  },
+  "author": "Michael Paulukonis",
+  "license": "MIT",
+  "gitHead": "ac7779550e40822d743f8edf2c5ca642ca3ac7cc",
+  "readmeFilename": "README.md"
+}
