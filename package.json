@@ -4,7 +4,10 @@
   "description": "Fairy Tale Titles from a Proppiann Narratem generator",
   "main": "index.js",
   "dependencies": {
-    "twit": "~1.1.9"
+    "twit": "~1.1.9",
+    "underscore": "~1.7.0",
+    "nlp_compromise": "~0.2.2",
+    "sentence-tokenizer": "0.0.7"
   },
   "devDependencies": {
     "vows": "~0.7.0"
