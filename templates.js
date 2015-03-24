@@ -727,17 +727,17 @@ var nTemplates = function(story, world, storyGen) {
         text.push(world.blankLine, interdiction.advisor.name + ' introduced {{MH}} to ' + hero.name);
         text.push(world.blankLine, god.converse(hero, god.magicalhelper));
 
-        var tale = story.subtale(god.magicalhelper, god);
+        // var tale = story.subtale(god.magicalhelper, god);
 
-        var intro = god.pick([
-            '{{MH}} {{said}} "I will tell you a story":',
-            '"I have a tale for you," {{said}} {{MH}}, "' + tale.title + ':"'
-        ]);
-        text.push(world.blankLine, intro, world.blankLine);
+        // var intro = god.pick([
+        //     '{{MH}} {{said}} "I will tell you a story":',
+        //     '"I have a tale for you," {{said}} {{MH}}, "' + tale.title + ':"'
+        // ]);
+        // text.push(world.blankLine, intro, world.blankLine);
 
-        text.push(tale.tale);
+        // text.push(tale.tale);
 
-        text.push(world.blankLine, '"And now," {{concluded}} {{MH}}, "my tale is done."');
+        // text.push(world.blankLine, '"And now," {{concluded}} {{MH}}, "my tale is done."');
 
         return text.join('\n').replace(/{{MH}}/mg, mh);
 
@@ -1450,26 +1450,26 @@ var nTemplates = function(story, world, storyGen) {
 
         god.advisor.introduced = true;
 
-        // 1/3 chance of telling a story....
-        if (god.coinflip(0.3)) {
-            var tale = story.subtale(god.advisor, god);
+        // // 1/3 chance of telling a story....
+        // if (god.coinflip(0.3)) {
+        //     var tale = story.subtale(god.advisor, god);
 
-            var intro = god.pick([
-                '{{AN}} {{said}} "I will tell you a story":',
-                '"I have a tale for you," {{said}} {{AN}}, "' + tale.title + ':"'
-            ]);
-            t.push(intro, world.blankLine);
+        //     var intro = god.pick([
+        //         '{{AN}} {{said}} "I will tell you a story":',
+        //         '"I have a tale for you," {{said}} {{AN}}, "' + tale.title + ':"'
+        //     ]);
+        //     t.push(intro, world.blankLine);
 
-            t.push(tale.tale);
+        //     t.push(tale.tale);
 
-            t.push(world.blankLinke, '"And now," {{concluded}} {{AN}}, "my tale is done."');
+        //     t.push(world.blankLinke, '"And now," {{concluded}} {{AN}}, "my tale is done."');
 
-            if (tale.universe.hero.health === world.healthLevel.dead) {
-                t.push('{{HN}} {{was}} a bit taken aback by the tale.');
-            }
+        //     if (tale.universe.hero.health === world.healthLevel.dead) {
+        //         t.push('{{HN}} {{was}} a bit taken aback by the tale.');
+        //     }
 
 
-        }
+        // }
 
         // TODO: if tale.universe.hero.health === world.healthLevel.dead
         // hero will respond uneasily

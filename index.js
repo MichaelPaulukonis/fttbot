@@ -1,9 +1,16 @@
-// var defaultTemplates = require('./default.templates.js');
 var templates = require('./templates.js');
-// var words = require('./words.js');
-// words is a requirement for wordbank.....
 var wordbank = require('./wordbank.test.js')(require('./words.js'));
 var storygen = require('./propp.js');
+var config = require('./config.js');
+var Twit = require('twit');
+var T = new Twit(config);
+
+
+var logger = function(msg) {
+  // console.log('logging?: ' + config.log);
+  if (config.log) console.log(msg);
+};
+
 
 var world = storygen().world;
 
@@ -13,10 +20,7 @@ var oneStory = function() {
 
     var text = [];
 
-    // nope nope nope
-
     var presets = world.util.randomProperty(storygen.presets);
-
 
     var setts = {
       herogender: 'random',
@@ -100,29 +104,75 @@ var novel = function() {
   var wc = 0;
   var n = [];
 
-  while (wc < 20000) {
+  while (wc < 50000) {
 
     var tale = oneStory();
 
     if (tale && tale.title) {
-      console.log(wc + ' : ' + tale.title);
+      wc += wordcount(tale.title);
+      // console.log(wc + ' : ' + tale.title);
       n.push(tale.title);
     }
 
 
   }
 
-  writeitout(n.join('\n\n'));
+  writeitout(n.join('\n'));
 
   console.log('DONE');
 
 
 };
 
-// TODO: take in some param; if present, output a set n stories
 
-novel();
+var tweeter = function(texts) {
 
-// console.log(oneStory());
-// console.log(oneStory());
-// console.log(oneStory());
+
+  try {
+
+    var title, tale = oneStory();
+
+    if (tale && tale.title) {
+      title = tale.title;
+    }
+
+    console.log(title);
+
+    if(!title) {
+      logger('NOTHING NOTHING NOTHING');
+    }
+  } catch (err) {
+    console.log('Error: ' + err.message);
+  }
+
+  if (title.length === 0 || title.length > 140) {
+    tweeter();
+  } else {
+    if (config.tweet_on) {
+      T.post('statuses/update', { status: title }, function(err, reply) {
+	if (err) {
+	  console.log('error:', err);
+	}
+	else {
+          // nothing on success
+	}
+      });
+    }
+  }
+
+};
+
+
+// Tweets ever n minutes
+// set config.seconds to 60 for a complete minute
+setInterval(function () {
+  try {
+    tweeter();
+  }
+  catch (e) {
+    console.log(e);
+  }
+}, 1000 * config.minutes * config.seconds);
+
+// Tweets once on initialization.
+tweeter();

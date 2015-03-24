@@ -1,23 +1,20 @@
 {
-  "name": "malepropp",
+  "name": "FairyTaleTitleBot",
   "version": "0.0.0",
-  "description": "Story Generator using Proppiann Narratemes",
+  "description": "Fairy Tale Titles from a Proppiann Narratem generator",
   "main": "index.js",
   "dependencies": {
-    "underscore": "~1.7.0",
-    "jquery": "~2.1.1",
-    "nlp_compromise": "~0.2.2",
-    "sentence-tokenizer": "0.0.7"
+    "twit": "~1.1.9"
   },
   "devDependencies": {
     "vows": "~0.7.0"
   },
   "scripts": {
-    "test": "node tests/test-malepropp.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/MichaelPaulukonis/malepropp.git"
+    "url": "https://github.com/MichaelPaulukonis/fttbot.git"
   },
   "author": "Michael Paulukonis",
   "license": "MIT",
