@@ -22,5 +22,8 @@
   "author": "Michael Paulukonis",
   "license": "MIT",
   "gitHead": "ac7779550e40822d743f8edf2c5ca642ca3ac7cc",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "engines": {
+    "node": "10"
+  }
 }

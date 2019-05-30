@@ -3,10 +3,9 @@ var wordbank = require('./wordbank.test.js')(require('./words.js'));
 var storygen = require('./propp.js');
 var config = require('./config.js');
 var Twit = require('twit');
-var T = new Twit(config);
 
 
-var logger = function(msg) {
+var logger = function (msg) {
   // console.log('logging?: ' + config.log);
   if (config.log) console.log(msg);
 };
@@ -14,7 +13,7 @@ var logger = function(msg) {
 
 var world = storygen().world;
 
-var oneStory = function() {
+var oneStory = function () {
 
   try {
 
@@ -62,7 +61,7 @@ var oneStory = function() {
 
     return tale;
 
-  } catch(ex) {
+  } catch (ex) {
     console.log(ex);
     // the last 3 items are non-standard.....
     var msg = ex.name + ' : ' + ex.message;
@@ -77,17 +76,17 @@ var oneStory = function() {
 
 
 // http://stackoverflow.com/questions/18679576/counting-words-in-string
-var wordcount = function(s) {
+var wordcount = function (s) {
 
-  s = s.replace(/(^\s*)|(\s*$)/gi,"");//exclude  start and end white-space
-  s = s.replace(/[ ]{2,}/gi," ");//2 or more space to 1
-  s = s.replace(/\n /,"\n"); // exclude newline with a start spacing
+  s = s.replace(/(^\s*)|(\s*$)/gi, "");//exclude  start and end white-space
+  s = s.replace(/[ ]{2,}/gi, " ");//2 or more space to 1
+  s = s.replace(/\n /, "\n"); // exclude newline with a start spacing
   return s.split(' ').length;
 
 };
 
 
-var writeitout = function(text) {
+var writeitout = function (text) {
 
   var fs = require('fs');
 
@@ -99,7 +98,7 @@ var writeitout = function(text) {
 
 };
 
-var novel = function() {
+var novel = function () {
 
   var wc = 0;
   var n = [];
@@ -125,7 +124,7 @@ var novel = function() {
 };
 
 
-var tweeter = function(texts) {
+var tweeter = function (texts) {
 
 
   try {
@@ -138,7 +137,7 @@ var tweeter = function(texts) {
 
     console.log(title);
 
-    if(!title) {
+    if (!title) {
       logger('NOTHING NOTHING NOTHING');
     }
   } catch (err) {
@@ -149,13 +148,11 @@ var tweeter = function(texts) {
     tweeter();
   } else {
     if (config.tweet_on) {
-      T.post('statuses/update', { status: title }, function(err, reply) {
-	if (err) {
-	  console.log('error:', err);
-	}
-	else {
-          // nothing on success
-	}
+      const tweeter = new Twit(config);
+      tweeter.post('statuses/update', { status: title }, function (err, reply) {
+        if (err) {
+          console.log('error:', err);
+        }
       });
     }
   }

@@ -8,8 +8,6 @@ module.exports = {
     access_token:         process.env.ACCESS_TOKEN,
     access_token_secret:  process.env.ACCESS_TOKEN_SECRET,
 
-    tweet_on:             (process.env.TWEET_ON.toLowerCase() === 'true'),
-    log:                  (process.env.LOG.toLowerCase() === 'true'),
-    seconds:              parseInt(process.env.SECONDS, 10),
-    minutes:              parseInt(process.env.MINUTES, 10)
+    tweet_on:             (process.env.TWEET_ON && process.env.TWEET_ON.toLowerCase() === 'true'),
+    log:                  (process.env.LOG && process.env.LOG.toLowerCase() === 'true')
 };
