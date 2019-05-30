@@ -145,7 +145,7 @@ var tweeter = function(texts) {
     console.log('Error: ' + err.message);
   }
 
-  if (title.length === 0 || title.length > 140) {
+  if (title.length === 0 || title.length > 280) {
     tweeter();
   } else {
     if (config.tweet_on) {
@@ -161,18 +161,6 @@ var tweeter = function(texts) {
   }
 
 };
-
-
-// Tweets ever n minutes
-// set config.seconds to 60 for a complete minute
-setInterval(function () {
-  try {
-    tweeter();
-  }
-  catch (e) {
-    console.log(e);
-  }
-}, 1000 * config.minutes * config.seconds);
 
 // Tweets once on initialization.
 tweeter();
